@@ -1,0 +1,47 @@
+[project]
+requires-python = ">=3.10"
+
+[tool.poetry]
+name = "streamlit-app"
+version = "0.1.0"
+description = ""
+authors = ["Theodros Zelleke <it@zelleke.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydash = "^7.0.3"
+streamlit = "^1.22.0"
+transitions = "^0.9.0"
+pandas = "^2.0.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+ruff = "^0.0.265"
+
+[tool.black]
+extend-exclude = '''
+/(
+    \.idea
+)/
+'''
+include = '\.pyi?$'
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+cache-dir = "~/.cache/ruff"
+extend-exclude = []
+extend-select = ["I"]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.isort]
+force-sort-within-sections = true
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

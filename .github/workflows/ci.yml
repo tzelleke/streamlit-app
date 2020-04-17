@@ -1,0 +1,12 @@
+name: CI
+
+on: [ push, workflow_dispatch ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: psf/black@stable
+    - uses: chartboost/ruff-action@v1
+    - uses: hadolint/hadolint-action@v3.1.0
