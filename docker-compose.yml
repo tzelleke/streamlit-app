@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  dev:
+    container_name: streamlit-app-dev
+    build:
+      context: .
+      target: dev
+    image: "${DOCKER_IMAGE_NAME:-streamlit-app}-dev"
+    ports:
+      - "127.0.0.1:${PORT:-8501}:8501"
+    volumes:
+      - ./config:/root/.streamlit
+      - ./app:/streamlit/app
+      - ./pyproject.toml:/streamlit/pyproject.toml
+      - ./poetry.lock:/streamlit/poetry.lock
+
+  prod:
+    container_name: streamlit-app-prod
+    build:
+      context: .
+      target: runtime
+    image: "${DOCKER_IMAGE_NAME:-streamlit-app}"
+    ports:
+      - "127.0.0.1:${PORT:-8501}:80"
+#    volumes:
+#      - ./.htpasswd:/streamlit/.htpasswd
+#      - ./supervisord-debian.conf:/etc/supervisor/conf.d/supervisord.conf
+#      - ./config:/root/.streamlit
+#      - ./:/streamlit
