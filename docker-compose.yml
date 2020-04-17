@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  streamlit:
+    container_name: streamlit-dev
+    build:
+      context: .
+    image: tzelleke/streamlit-dev
+    ports:
+      - "127.0.0.1:${PORT:-8501}:8501"
+    volumes:
+      - ./config:/root/.streamlit
+      - ./app:/streamlit/app
+      - ./pyproject.toml:/streamlit/pyproject.toml
+      - ./poetry.lock:/streamlit/poetry.lock

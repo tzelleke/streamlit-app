@@ -1,0 +1,9 @@
+.env
+.env.example
+heroku.yml
+.git*
+.idea
+docker-compose*
+Dockerfile
+.dockerignore
+**/__pycache__
