@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  streamlit:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: streamlit-heroku-app
+    env_file:
+      - .env
+    ports:
+      - $PORT:$PORT
+    command: streamlit run --server.port $PORT ./app.py
